@@ -12,6 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('index')}}">Prodotti</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('product.create')}}">Inserisci prodotti</a>
+          </li>
         </ul>
       </div>
     </div>

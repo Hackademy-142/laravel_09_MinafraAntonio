@@ -4,8 +4,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
+
+//PublicController
 Route::get('/', [PublicController::class, 'viewHome'])->name('home');
 
-Route::post('/products/create', [ProductController::class, 'store'])->name('product.store');
+//ProductController
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
 
-Route::get('/product/card', [ProductController::class, 'index'])->name('index');
+Route::post('/products/store', [ProductController::class, 'store'])->name('product.store');
+
+Route::get('/product/index', [ProductController::class, 'index'])->name('index');
