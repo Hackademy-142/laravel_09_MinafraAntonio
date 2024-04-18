@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicController::class, 'viewHome'])->name('home');
 
 //ProductController
-Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
 
-Route::post('/products/store', [ProductController::class, 'store'])->name('product.store');
+Route::post('/products/store', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
 
 Route::get('/product/index', [ProductController::class, 'index'])->name('index');
