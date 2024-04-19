@@ -9,12 +9,19 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
         </li>
-        @Auth{{-- se l utente ha l autenticazione --}}
         <li class="nav-item">
-          <a class="nav-link" href="{{route('index')}}">Prodotti</a>
+          <a class="nav-link" href="{{route('product.index')}}">Prodotti</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('product.create')}}">Inserisci prodotti</a>
+          <a class="nav-link" href="{{route('article.index')}}">Articoli</a>
+        </li>
+
+        @Auth{{-- se l utente ha l autenticazione --}}
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('product.create')}}">Crea prodotti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('article.create')}}">Crea Articolo</a>
         </li>
         @endauth
 

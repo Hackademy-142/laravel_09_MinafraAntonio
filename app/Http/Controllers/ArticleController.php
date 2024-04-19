@@ -12,7 +12,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles= Article::all();//mi recupera dal db tutti gli articoli e li salva in una collezione
+        return view('article.index', compact('articles'));//nuova sintassi per portarti i dati nella view
     }
 
     /**
@@ -20,7 +21,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article.create');
     }
 
     /**
@@ -28,7 +29,20 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* $title = $request->title;
+        $subtitle = $request->title;
+        $body = $request->body;
+        $img = $request->file('img')->store('public/img'); */
+
+        //mass assigment
+        Article::create([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'img' => $request->file('img')->store('public/img'),
+        ]);
+
+        return redirect()->back()->with('message', 'Articolo inserito con successo');
     }
 
     /**
@@ -36,7 +50,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('article.show' , compact('article'));
     }
 
     /**
