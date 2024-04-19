@@ -2,8 +2,6 @@
 
     <x-head/>
 
-
-
-
+    <x-display-message/>
 
 </x-layout>

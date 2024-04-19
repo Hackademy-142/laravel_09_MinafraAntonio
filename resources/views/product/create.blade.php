@@ -9,21 +9,11 @@
         </div>
     </header>
     {{-- condizione per il prondotto creato con successo --}}
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-@endif
+    <x-display-message/>
+
     {{-- CODICE PER MOSTRARE L ERRORE DI NON AVER SCRITTO NEL CAMPO DEL FORM --}}
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <x-display-errors/>
+
     {{-- FORM DEI PRODOTTI --}}
     <div class="container">
         <div class="row justify-content-center my-5 ">
