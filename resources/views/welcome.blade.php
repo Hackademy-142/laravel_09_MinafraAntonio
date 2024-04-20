@@ -4,4 +4,6 @@
 
     <x-display-message/>
 
+    <x-footer/>
+
 </x-layout>

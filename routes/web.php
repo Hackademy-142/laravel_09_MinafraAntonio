@@ -16,6 +16,10 @@ Route::post('/products/store', [ProductController::class, 'store'])->name('produ
 
 Route::get('/product/index', [ProductController::class, 'index'])->name('product.index')->middleware('auth');
 
+//rotta parametrica prodotti
+Route::get('/product/show/{product}', [ProductController::class, 'show'])->name('product.show');
+
+
 //articleController
 Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create')->middleware('auth');
 
@@ -23,5 +27,5 @@ Route::post('/article/store', [ArticleController::class, 'store'])->name('articl
 
 Route::get('/article/index', [ArticleController::class, 'index'])->name('article.index')->middleware('auth');
 
-//rotta parametrica
+//rotta parametrica articoli
 Route::get('/article/show/{article}', [ArticleController::class, 'show'])->name('article.show');

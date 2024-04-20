@@ -36,7 +36,7 @@
                         <label for="img" class="form-label">Inserisci l'immagine</label>
                         <input name="img" type="file" class="form-control" id="img" aria-describedby="emailHelp">
                     </div>
-                    <button type="submit" class="btn btn-primary">Crea prodotto</button>
+                    <button type="submit" class="btn btn_custom">Crea prodotto</button>
                 </form>
             </div>
         </div>

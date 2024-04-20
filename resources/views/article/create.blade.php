@@ -36,7 +36,7 @@
                         <label for="img" class="form-label">Inserisci l'immagine</label>
                         <input name="img" type="file" class="form-control" id="img">
                     </div>
-                    <button type="submit" class="btn btn-primary">Crea articolo</button>
+                    <button type="submit" class="btn btn_custom">Crea articolo</button>
                 </form>
             </div>
         </div>

@@ -20,7 +20,7 @@
                       <h5 class="card-title">{{$article->name}}</h5>
                       <p class="card-subtitle">{{$article->subtitle}}</p>
                       <p class="card-text">{{$article->body}}</p>
-                      <a href="{{route('article.show', compact('article'))}}" class="btn btn-primary">Dettaglio articolo</a>
+                      <a href="{{route('article.show', compact('article'))}}" class="btn btn_custom">Dettaglio articolo</a>
                     </div>
                   </div>
             </div>
