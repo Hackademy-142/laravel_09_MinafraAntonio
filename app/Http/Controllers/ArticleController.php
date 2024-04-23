@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -27,7 +28,7 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         /* $title = $request->title;
         $subtitle = $request->title;
@@ -35,12 +36,16 @@ class ArticleController extends Controller
         $img = $request->file('img')->store('public/img'); */
 
         //mass assigment
-        Article::create([
+        $article = Article::create([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'body' => $request->body,
-            'img' => $request->file('img')->store('public/img'),
         ]);
+
+        if($request->file('img')){
+            $article->img = $request->file('img')->store('public/img');
+            $article->save();
+        }
 
         return redirect()->back()->with('message', 'Articolo inserito con successo');
     }
@@ -58,7 +63,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('article.edit', compact('article'));
     }
 
     /**
@@ -66,14 +71,35 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        //condizione se metto l immagine o meno
+        if($request->file('img')){
+            $img = $request->file('img')->store('public/img');
+        }
+        else{
+            $img = $article->img;
+        }
+
+        $article->update([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'img' => $img
+        ]);
+
+        return redirect(route('article.index'))->with('message', 'articolo modificato'); //ritorno all pagina index degli articoli
     }
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->back()->with('message', 'articolo eliminato');
     }
 }

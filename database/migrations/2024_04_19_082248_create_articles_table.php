@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->text('body');
-            $table->string('img')->default('public/img/default_image.jpg');
+            $table->string('img')->default('public/img/default.png');
             $table->timestamps();
         });
     }

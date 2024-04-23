@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,3 +30,11 @@ Route::get('/article/index', [ArticleController::class, 'index'])->name('article
 
 //rotta parametrica articoli
 Route::get('/article/show/{article}', [ArticleController::class, 'show'])->name('article.show');
+
+//rotta per il put degli articoli
+Route::get('/article/edit/{article}', [ArticleController::class, 'edit'])->name('article.edit')->middleware('auth');
+
+Route::put('article/update/{article}', [ArticleController::class, 'update'])->name('article.update')->middleware('auth');
+
+//rotta per il delete dell'articolo
+Route::delete('article/destroy/{article}', [ArticleController::class, 'destroy'])->name('article.destroy')->middleware('auth');

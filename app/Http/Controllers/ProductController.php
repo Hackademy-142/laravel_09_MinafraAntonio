@@ -26,14 +26,12 @@ class ProductController extends Controller
             $img = $request->file('img')->store('public/img');// metodo file mi cattura il file della request perche è un file piu complesso ed il medoto store me lo va a salvare nella cartella img che sta dentro a public
         }
 
-        $product = new Product();
-
-        $product->name = $name;
-        $product->description = $description;
-        $product->price = $price;
-        $product->img = $img;
-
-        $product->save();
+        Product::create([
+            'name' => $name,
+            'description' => $description,
+            'price' => $price,
+            'img' => $request->has('img') ? $request->file('img')->store('public/img') : 'img/default.png',
+        ]);
 
         return redirect()->back()->with('message', 'Prodotto inserito');
     }
