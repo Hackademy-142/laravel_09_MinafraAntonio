@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-3">
                         <span class="form-label">Immagine attuale:</span>
-                        <img src="{{Storage::url('$artticle->img')}}" alt="{{$article->title}}">
+                        <img src="{{Storage::url($article->img)}}" alt="{{$article->title}}">
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Inserisci l'immagine</label>

@@ -44,4 +44,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the products for the blog post.
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class); //questo metodo ci fa ritornare tutti i prodotti collegati all utente
+    }
+
+
 }

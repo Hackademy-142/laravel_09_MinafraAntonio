@@ -13,6 +13,16 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'img'
+        'img',
+        'user_id'
     ];
+
+    /**
+     * Get the user that owns the comment.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class); //quando chiamiamo il metodo user ci ritorna l utente collegato al prodotto
+    }
+
 }

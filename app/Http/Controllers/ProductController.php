@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -31,6 +32,7 @@ class ProductController extends Controller
             'description' => $description,
             'price' => $price,
             'img' => $request->has('img') ? $request->file('img')->store('public/img') : 'img/default.png',
+            'user_id'=> Auth::user()->id
         ]);
 
         return redirect()->back()->with('message', 'Prodotto inserito');
