@@ -17,8 +17,17 @@ Route::post('/products/store', [ProductController::class, 'store'])->name('produ
 
 Route::get('/product/index', [ProductController::class, 'index'])->name('product.index')->middleware('auth');
 
+//rotte nuove prodotti
+Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit')->middleware('auth');
+
+Route::put('product/update/{product}', [ProductController::class, 'update'])->name('product.update')->middleware('auth');
+
+Route::delete('product/destroy/{product}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware('auth');
+
 //rotta parametrica prodotti
 Route::get('/product/show/{product}', [ProductController::class, 'show'])->name('product.show');
+
+
 
 
 //articleController

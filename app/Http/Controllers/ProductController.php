@@ -50,4 +50,40 @@ class ProductController extends Controller
     {
         return view('product.show' , compact('product'));
     }
+
+    public function edit(Product $product)
+    {
+        return view('product.edit', compact('product'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        //condizione se metto l immagine o meno
+        if($request->file('img')){
+            $img = $request->file('img')->store('public/img');
+        }
+        else{
+            $img = $product->img;
+        }
+
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'img' => $img
+        ]);
+
+        return redirect(route('product.index'))->with('message', 'prodotto modificato'); //ritorno all pagina index degli articoli
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return redirect()->back()->with('message', 'prodotto eliminato');
+    }
 }

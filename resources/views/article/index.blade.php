@@ -22,14 +22,11 @@
                       <a href="{{route('article.show', compact('article'))}}" class="btn my-1 btn_custom">Dettaglio articolo</a>
                       <a href="{{route('article.edit', compact('article'))}}" class="btn my-1 bg-warning ">Modifica articolo</a>
 
-                      <form
-                    action="{{route('article.destroy', compact('article') )}}"
-                    method="POST"
-                    >
-                        @method('DELETE')
-                        @csrf
-                        <button class="btn btn-danger" type="submit">Elimina articolo</button>
-                    </form>
+
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Elimina articolo</button>
+
+
+
 
                     </div>
                   </div>
@@ -37,5 +34,28 @@
             @endforeach
         </div>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">SE SICURO DI ELIMINARE L'ARTICOLO?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn_custom" data-bs-dismiss="modal">NO</button>
+        <form
+                    action="{{route('article.destroy', compact('article') )}}"
+                    method="POST"
+                    >
+                        @method('DELETE')
+                        @csrf
+          <button type="submit" class="btn btn-danger">SI</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 </x-layout>
